@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile # Utilisation d'un Dockerfile pour construire l'image
+    container_name: mon-app
+    volumes:
+      - ./src:/app/src # Synchronisation des fichiers locaux
+      - ./public:/src/public
+    ports:
+      - "3001:3001" # Expose le port 3000
