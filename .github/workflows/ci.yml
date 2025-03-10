@@ -24,7 +24,7 @@ jobs:
         run: |
           ssh -i /home/yoel/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
             # Aller dans le répertoire de l'application
-            cd /home/${{ secrets.SSH_USER }}/project-AWS-
+            cd /home/${{ secrets.SSH_USER }}/project-AWS-/mon-app
             
             # Mettre à jour le code depuis le dépôt Git
             git pull origin main
