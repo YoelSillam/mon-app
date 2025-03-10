@@ -20,4 +20,4 @@ COPY --from=build /app/build .
 
 EXPOSE 3001
 
-CMD ["serve", "-s", ".", "-l", "3001"]
+CMD ["serve", "-s", ".", "-l", "tcp://0.0.0.0:3001"]
