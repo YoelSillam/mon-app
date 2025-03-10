@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
             # Aller dans le répertoire de l'application
-            cd /home/yoel/project-AWS-
+            cd /yoel/project-AWS-
 
             # Mettre à jour le code depuis le dépôt Git
             git pull origin main
