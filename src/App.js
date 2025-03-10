@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React YOEL
+          Learn React YOELS
         </a>
       </header>
     </div>
