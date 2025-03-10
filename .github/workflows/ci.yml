@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy application
         run: |
-          ssh -i /home/yoel/.ssh/id_rsa ec2-user@${{ secrets.SSH_HOST }} <<EOF
+          ssh -i /home/yoel/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
             # Aller dans le répertoire de l'application
             cd /home/${{ secrets.SSH_USER }}/project-AWS-
             
