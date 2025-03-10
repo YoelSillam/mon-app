@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,24 +18,25 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          # Ajouter la clé de l'hôte à known_hosts pour éviter les erreurs de vérification
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy application
         run: |
-          sudo ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
+          ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
             # Aller dans le répertoire de l'application
-            cd /yoel/project-AWS-
-
+            cd /home/${{ secrets.SSH_USER }}/project-AWS-
+            
             # Mettre à jour le code depuis le dépôt Git
             git pull origin main
-
+            
             # Arrêter et supprimer le conteneur existant
             docker-compose down
-
+            
             # Supprimer les images Docker obsolètes
             docker system prune -af
             docker image prune -af
-
+            
             # Recréer et redémarrer le conteneur
             docker-compose up -d --build
           EOF
