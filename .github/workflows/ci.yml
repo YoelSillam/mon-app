@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy application
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
+          sudo ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<EOF
             # Aller dans le répertoire de l'application
             cd /home/yoel/project-AWS-
 
